@@ -1,14 +1,28 @@
-.gradient_background {
-    background: linear-gradient(90deg, #010101, #161616);
+.background {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    animation: gradient 15s ease infinite;
     min-height: 100vh;
     min-width: 100v;
 }
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
 .hometitle {
     font-family: 'Harmony', harmony;
     font-size: 52px;
     letter-spacing: 12px;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     color: #f3f1f1;
     text-align: center;
     padding-left: 1.25rem;
@@ -32,74 +46,77 @@
         font-size: 39px;
     }
 }
+.hometitle::before {
+    content: "";
+    display: inline-block;
+    width: 200px; 
+    height: auto;
+    background-image: url('https://c.tenor.com/Ihbu3iBTjGcAAAAM/better-call-saul-loop.gif');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 10px; 
+}
 
-.trailer{
-    font-family: 'Westmount', Westmount;
-    font-size: 41px;
-    letter-spacing: 2px;
+.hometitle::after {
+    content: "";
+    display: inline-block;
+    width: 200px; 
+    height: auto;
+    background-image: url('https://c.tenor.com/Ihbu3iBTjGcAAAAM/better-call-saul-loop.gif');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 10px; 
+}
+
+
+
+
+.safetytitle {
+    font-size: 1;
+    letter-spacing: 7px;
+    text-align: center;
     margin-bottom: 20px;
     color: #f3f1f1;
-    position: relative;
-    max-width: 700px;
-    margin: 1px auto;
     text-align: center;
-    padding-bottom: 6rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    padding-top: 0rem;
+    padding-bottom: 0rem;
 }
-@media only screen and (max-width: 767px) {
-    .trailer{
-        font-size: 29px;
-        margin-top: -2rem;
-    }
+.safetytitle::before{
+    content: "";
+    display: inline-block;
+    width: 200px; 
+    height: auto;
+    background-image: url('https://c.tenor.com/Ikt7sU8aaJMAAAAM/thrust-dance.gif');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 10px; 
 }
 
-.trailer::before {
-    content: " ";
-    display: block;
-    height: 1px;
-    width: 130px;
-    position: absolute;
-    top: 18%;
-    left: 0;
-    background: #dbdbdb;
+.safetytitle::after{
+    content: "";
+    display: inline-block;
+    width: 200px; 
+    height: auto;
+    background-image: url('https://c.tenor.com/Ikt7sU8aaJMAAAAM/thrust-dance.gif');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 10px; 
 }
 @media only screen and (max-width: 767px) {
-    .trailer::before{
-        height:0px;
-    }
-}
-  
-.trailer::after {
-    content: " ";
-    display: block;
-    height: 1px;
-    width: 130px;
-    position: absolute;
-    top: 18%;
-    right: 0;
-    background: #f3f1f1;
-    
-}
-@media only screen and (max-width: 767px) {
-    .trailer::after{
-        height:0px;
-    }
-}
-
-.sec{
-    font-family: 'MagnumSans', magnumsans;
-    font-size: 36px;
-    letter-spacing: 7px;
-    margin-bottom: 20px;
-    color: #f7f4f4;
-    text-align: center;
-}
-@media only screen and (max-width: 1068px){
-    .sec {
-        font-size: 25px;
+    .safetytitle{
+        font-size: 45px;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        padding-top: 1rem;
     }
 }
 @media only screen and (max-width: 667px) {
-    .sec{
-        font-size: 20px;
+    .safetytitle{
+        margin-left: 1rem;
+        margin-right: 1rem;
+        padding-top: 1rem;
+        font-size: 39px;
     }
 }

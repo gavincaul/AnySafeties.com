@@ -6,7 +6,7 @@ import VideoFile from '../components/VideoFile.tsx';
 import './Projects.css';
 import NavBar from '../components/NavBar.tsx';
 
-export default function Professional() {
+export default function Solo() {
   /*const [videos, setVideos] = useState(VideoList({ page: false }));*/ //Took out filter
   const arrayToGrid = (arr, elementsPerRow) => {
     const result = [];
@@ -16,9 +16,9 @@ export default function Professional() {
     return result;
   };
   /*const handleFilterChange = (filteredVideos) => {
-    setVideos(filteredVideos)
+    setVideos(filteredVideos);
   };*/
-  const videoGrid = arrayToGrid(VideoList({ page: false }), 3);
+  const videoGrid = arrayToGrid(VideoList({ page: true }), 3);
 
   
 
@@ -28,16 +28,16 @@ export default function Professional() {
   return (
     <div className="gradient_background_projects">
       <NavBar></NavBar>
-      <div className="title">Professional Work</div>
+      <div className="title">Solo Projects</div>
       <br />
       <br />
       {/*<Filter onFilterChange={handleFilterChange}></Filter>*/}
       <br />
-      <Container maxWidth="md" style={{ marginTop: 16}}>
-        <Grid container spacing={3} style={{ marginLeft: 0 }} className="gridContainer">
+      <Container maxWidth="md" style={{ marginTop: 0}}>
+        <Grid container spacing={3} >  
           {videoGrid.map((row) =>
             row.map((vidData, idx) => (
-              <Grid key={idx} item xs={12} sm={4}  >
+              <Grid key={idx} item xs={12} sm={4} className="gridContainer">
                 <VideoFile {...vidData} />
               </Grid>
             ))
