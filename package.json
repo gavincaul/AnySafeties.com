@@ -1,7 +1,7 @@
 {
-  "name": "colton-app",
+  "name": "anysafeties",
   "version": "0.1.0",
-  "homepage": "https://www.coltoncaulfield.com/",
+  "homepage": "https://www.anysafties.com/",
   "private": false,
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -18,9 +18,9 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "echo www.coltoncaulfield.com > ./build/CNAME && gh-pages -d build",
+    "deploy": "echo www.anysafeties.com > ./build/CNAME && gh-pages -d build",
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && CI=false",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
