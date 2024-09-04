@@ -1,7 +1,7 @@
 import React from "react";
 import './Home.css';
 import NavBar from '../components/NavBar.tsx';
-import SafetyCount from "../components/SafteyCount.tsx";
+import SafetyDisplay from "../components/SafetyDisplay.tsx";
 
 export default function Landing() {
   return (
@@ -47,7 +47,7 @@ export default function Landing() {
           />
         </div> */}
         
-        <SafetyCount></SafetyCount>
+        <SafetyDisplay></SafetyDisplay>
       </div>
     </div>
   );

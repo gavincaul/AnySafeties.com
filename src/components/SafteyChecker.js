@@ -1,68 +1,49 @@
-import "../data/TeamStats.json"
-
-
-var fbURLv2="https://www.thesportsdb.com/api/v2/json/all/leagues";
-var commentdata = "";
-$.ajax({
-    url: fbURLv2,
-    data: "message = "+commentdata,
-    dataType: "json",
-    type: 'POST',
-    beforeSend: function(xhr) {
-        xhr.setRequestHeader('X-API-KEY', 'xxxxxx');
-        xhr.setRequestHeader('Content-Type', 'application/json');
-    },
-    // If success         
-    success: function (resp) {
-        console.log(resp);
-    },
-    // If error
-    error: function(e) {
-        console.log(e);
-    }
-});
-
-
-const fs = require('fs');
-const axios = require('axios');
-
 // Function to fetch live data from the API
 async function fetchLiveData(apiUrl) {
     try {
-        const response = await axios.get(apiUrl);
-        return response.data;
+        const response = await fetch(apiUrl);
+        return await response.json();
     } catch (error) {
-        console.error(`Failed to fetch data: ${error.response ? error.response.status : error.message}`);
+        console.error(`Failed to fetch data: ${error.message}`);
         return null;
     }
 }
 
+// Function to compare JSON objects
 function compareJson(oldData, newData) {
     return JSON.stringify(oldData) !== JSON.stringify(newData);
 }
 
-// Main function to update JSON file
-async function updateJson(apiUrl, jsonFilePath) {
+// Function to detect safeties by checking score changes
+function detectSafeties(oldData, newData) {
+    let detectedSafeties = [];
+    if (!oldData.livescore || !newData.livescore) return detectedSafeties;
+
+    for (let i = 0; i < oldData.livescore.length; i++) {
+        if (
+            (parseInt(newData.livescore[i].intHomeScore) - parseInt(oldData.livescore[i].intHomeScore) === 2) || 
+            (parseInt(newData.livescore[i].intAwayScore) - parseInt(oldData.livescore[i].intAwayScore) === 2)
+        ) {
+            detectedSafeties.push(newData.livescore[i].strAwayTeam + " vs " + newData.livescore[i].strHomeTeam);
+        }
+    }
+    return detectedSafeties;
+}
+
+
+export async function updateJson(apiUrl, setSafeties) {
     const liveData = await fetchLiveData(apiUrl);
     if (!liveData) return;
 
     let currentData = {};
-    if (fs.existsSync(jsonFilePath)) {
-        currentData = JSON.parse(fs.readFileSync(jsonFilePath, 'utf8'));
-    }
 
     if (compareJson(currentData, liveData)) {
-        fs.writeFileSync(jsonFilePath, JSON.stringify(liveData, null, 2));
-        console.log("JSON file updated.");
+        const safeties = detectSafeties(currentData, liveData);
+        if (safeties.length > 0) {
+            setSafeties(safeties); // Update safeties in the React component state
+        }
+        console.log("Safeties detected and updated.");
     } else {
-        console.log("No changes detected. JSON file remains the same.");
+        console.log("No changes detected.");
     }
 }
-
-// Usage
-const apiUrl = 'YOUR_API_URL_HERE';  // Replace with your API URL
-const jsonFilePath = 'path/to/your/json/file.json';  // Replace with the path to your JSON file
-updateJson(apiUrl, jsonFilePath);
-
-
-
