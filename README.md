@@ -1,5 +1,4 @@
-# A website dedicated to the works of Colton Caulfield, [Itemax](https://www.youtube.com/@itemax)
-[www.coltoncaulfield.com](https://www.coltoncaulfield.com)    
+# A website for tracking NFL Safeties
   
   
 Made by Gavin Caulfield
