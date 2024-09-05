@@ -7,7 +7,7 @@ const SafetyDisplay = () => {
 
   useEffect(() => {
     const apiUrl = "YOUR_API_URL_HERE";
-    const apiKey = process.env.REACT_APP_API_KEY;
+    //const apiKey = process.env.REACT_APP_API_KEY;
 
     updateJson(apiUrl, setSafeties);
 
