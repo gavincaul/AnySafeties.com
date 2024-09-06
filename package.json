@@ -18,7 +18,7 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "echo www.anysafeties.com > ./build/CNAME && gh-pages -d build --dest .",
+    "deploy": "echo www.anysafeties.com > ./build/CNAME && gh-pages -d build -r https://$GITHUB_TOKEN@github.com/gavincaul/AnySafeties.com.git",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
