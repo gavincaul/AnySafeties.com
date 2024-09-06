@@ -18,9 +18,9 @@
   },
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "echo www.anysafeties.com > ./build/CNAME && gh-pages -d build",
+    "deploy": "echo www.anysafeties.com > ./build/CNAME && gh-pages -d build --dest .",
     "start": "react-scripts start",
-    "build": "react-scripts build && CI=false",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
